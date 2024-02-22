@@ -1,8 +1,16 @@
-/* #container {
+#container {
     display: grid;
     justify-content: center;
     align-content: center;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
     gap: 10px;
-} */
+}
+
+#screen{
+    grid-column: 1 / -1;
+}
+
+#equals {
+    grid-column: span 2;
+}
