@@ -7,6 +7,8 @@ function mod(a, b){return a%b}
 
 // Operation function
 function operate(a, b, op) {
+    a = Number(a)
+    b = Number(b)
     switch (op){
         case "+":
             return add(a, b)
@@ -21,39 +23,61 @@ function operate(a, b, op) {
     }
 }
 
+// Inicializing storage as falst values for checks
 let a = ''
 let b = ''
 let op = ''
 
+// Target the buttons
 const display = document.querySelector('#screen')
 const numbers = document.querySelectorAll('[data-number]')
 const operation = document.querySelectorAll('[data-operation]')
 const equals = document.querySelector('#equals')
-
 const delBtn = document.querySelector('#del')
 const clearBtn = document.querySelector('#clear')
 
+// Event listeners for buttons, with theis suitable functions
 numbers.forEach(button => button.addEventListener('click', () => {
     if (!op) {
-        display.textContent += button.textContent
-        a = button.textContent
+        if (button.textContent == '.'){
+            a += '.'
+        } else if (a.includes('.')) {
+            a += button.textContent
+        } else {
+            a += button.textContent
+        }
+        display.textContent = a
     }
-    if (op) {
-        display.textContent += button.textContent
-        b = button.textContent
+    else {
+        if (button.textContent == '.'){
+            b += '.'
+        } else if (b.includes('.')) {
+            b += button.textContent
+        } else {
+            b += button.textContent
+        }
+        display.textContent = b
     }
 }))
 
 operation.forEach(button => button.addEventListener ('click', () => {
-    // display.textContent += ` ${button.textContent} `
+    if (!op){
     op = button.textContent
+    } else {
+        a = operate(a, b, op)
+        display.textContent = a
+        op = button.textContent
+        b = ''
+    }
 }))
 
 equals.addEventListener('click', () => {
-    a = Number(a)
-    b = Number(b)
+    if (!a || !b || !op){
+        return 
+    } else {
     let result = operate(a, b, op)
-    display.textContent = result
+    display.textContent = result}
+    
 })
 
 clearBtn.addEventListener('click', () => {
