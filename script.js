@@ -30,19 +30,22 @@ const numbers = document.querySelectorAll('[data-number]')
 const operation = document.querySelectorAll('[data-operation]')
 const equals = document.querySelector('#equals')
 
+const delBtn = document.querySelector('#del')
+const clearBtn = document.querySelector('#clear')
+
 numbers.forEach(button => button.addEventListener('click', () => {
     if (!op) {
         display.textContent += button.textContent
-        a += button.textContent
+        a = button.textContent
     }
     if (op) {
         display.textContent += button.textContent
-        b += button.textContent
+        b = button.textContent
     }
 }))
 
 operation.forEach(button => button.addEventListener ('click', () => {
-    display.textContent += ` ${button.textContent} `
+    // display.textContent += ` ${button.textContent} `
     op = button.textContent
 }))
 
@@ -51,4 +54,11 @@ equals.addEventListener('click', () => {
     b = Number(b)
     let result = operate(a, b, op)
     display.textContent = result
+})
+
+clearBtn.addEventListener('click', () => {
+    a = ''
+    b = ''
+    op = ''
+    display.textContent = ''
 })
