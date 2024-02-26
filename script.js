@@ -31,7 +31,7 @@ function operate(a, b, op) {
         return 'Math ERROR'
     }
     if (!Number.isInteger(res)){
-        return res.toFixed(8)
+        return res.toFixed(6)
     } else {
         return res.toString()
     }
