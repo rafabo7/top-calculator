@@ -27,6 +27,9 @@ function operate(a, b, op) {
             res = mod(a, b)
             break
     }
+    if (res == Infinity) {
+        return 'Math ERROR'
+    }
     if (!Number.isInteger(res)){
         return res.toFixed(8)
     } else {
