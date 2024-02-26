@@ -9,17 +9,28 @@ function mod(a, b){return a%b}
 function operate(a, b, op) {
     a = Number(a)
     b = Number(b)
+    let res
     switch (op){
         case "+":
-            return add(a, b)
+            res = add(a, b)
+            break
         case "-":
-            return subs(a, b)
+            res = subs(a, b)
+            break
         case "/":
-            return div(a, b)
+            res = div(a, b)
+            break
         case "*":
-            return mult(a, b)
+            res = mult(a, b)
+            break
         case "%":
-            return mod(a, b)
+            res = mod(a, b)
+            break
+    }
+    if (!Number.isInteger(res)){
+        return res.toFixed(8)
+    } else {
+        return res.toString()
     }
 }
 
@@ -27,6 +38,7 @@ function operate(a, b, op) {
 let a = ''
 let b = ''
 let op = ''
+let result = ''
 
 // Target the buttons
 const display = document.querySelector('#screen')
@@ -61,9 +73,15 @@ numbers.forEach(button => button.addEventListener('click', () => {
 }))
 
 operation.forEach(button => button.addEventListener ('click', () => {
-    if (!op){
-    op = button.textContent
-    } else {
+    if (!a){
+        a = result
+        display.textContent = a
+        op = button.textContent
+    }
+    else if (!op){
+        op = button.textContent
+        }
+    else {
         a = operate(a, b, op)
         display.textContent = a
         op = button.textContent
@@ -75,8 +93,11 @@ equals.addEventListener('click', () => {
     if (!a || !b || !op){
         return 
     } else {
-    let result = operate(a, b, op)
-    display.textContent = result}
+    result = operate(a, b, op)
+    display.textContent = result
+    a = ''
+    b = ''
+    op = ''}
     
 })
 
