@@ -31,9 +31,9 @@ function operate(a, b, op) {
         return 'Math ERROR'
     }
     if (!Number.isInteger(res)){
-        return res.toFixed(6)
+        return parseFloat(res.toFixed(6))
     } else {
-        return res.toString()
+        return res
     }
 }
 
