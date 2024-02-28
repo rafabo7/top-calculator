@@ -9,7 +9,8 @@
 }
 
 html {
-font-family: monospace;}
+font-family: 'PressStart2PRegular';
+}
 
 body {
     text-align: center;
@@ -17,6 +18,7 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #D6D8E1;
+    font-family: inherit;
 }
 
 #calculator {
@@ -45,7 +47,8 @@ body {
     align-content: center;
     justify-content: flex-start;
     align-items: center;
-    font-size: 5rem;
+    font-size: 2.6rem;
+    font-family: inherit;
     background-color: var(--display-background);
     color: black;
     padding: 0 12px;
@@ -70,7 +73,7 @@ button {
 footer {
     position: fixed;
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1rem;
     padding: 8px 0;
     bottom: 0;
     text-align: center;
